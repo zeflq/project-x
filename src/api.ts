@@ -7,3 +7,6 @@ export async function fetchData(url: string): Promise<any> {
 export function formatDate(date: string): string {
   return new Date(date).toLocaleDateString();
 }
+function calculateSum(a: number, b: number): number { 
+  
+}
