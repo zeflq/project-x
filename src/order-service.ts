@@ -1,3 +1,5 @@
+const API_BASE_URL = process.env.API_BASE_URL ?? "";
+
 export interface Order {
   id: string;
   userId: string;
@@ -6,24 +8,56 @@ export interface Order {
   status: "pending" | "shipped" | "delivered";
 }
 
-// violates: too generic, should be fetchOrders or fetchUserOrders
-export async function getData(userId: string): Promise<Order[]> {
-  const res = await fetch(`/api/orders?userId=${userId}`);
-  return res.json();
+export async function fetchUserOrders(userId: string): Promise<Order[]> {
+  try {
+    const response = await fetch(
+      `${API_BASE_URL}/api/v1/orders?userId=${encodeURIComponent(userId)}`,
+    );
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch user orders. Status: ${response.status}`);
+    }
+
+    return (await response.json()) as Order[];
+  } catch (error) {
+    throw new Error(
+      `Unable to fetch user orders: ${error instanceof Error ? error.message : "Unknown error"}`,
+    );
+  }
 }
 
-// violates: should be isEligibleForRefund
-export function checkRefund(order: Order): boolean {
+export function isEligibleForRefund(order: Order): boolean {
   return order.status === "delivered" && order.total > 0;
 }
 
-// violates: should be cancelOrder, not handleCancel
-export async function handleCancel(orderId: string): Promise<void> {
-  await fetch(`/api/orders/${orderId}/cancel`, { method: "POST" });
+export async function cancelOrder(orderId: string): Promise<void> {
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/v1/orders/${orderId}/cancel`, {
+      method: "POST",
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to cancel order. Status: ${response.status}`);
+    }
+  } catch (error) {
+    throw new Error(
+      `Unable to cancel order: ${error instanceof Error ? error.message : "Unknown error"}`,
+    );
+  }
 }
 
-// ok: follows convention
 export async function fetchOrderById(orderId: string): Promise<Order> {
-  const res = await fetch(`/api/orders/${orderId}`);
-  return res.json();
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/v1/orders/${orderId}`);
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch order. Status: ${response.status}`);
+    }
+
+    return (await response.json()) as Order;
+  } catch (error) {
+    throw new Error(
+      `Unable to fetch order: ${error instanceof Error ? error.message : "Unknown error"}`,
+    );
+  }
 }

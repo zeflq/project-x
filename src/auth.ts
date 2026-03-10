@@ -4,8 +4,8 @@ export interface User {
   role: string;
 }
 
-export function getUserById(id: string, users: User[]): User {
-  return users.find((u) => u.id === id);
+export function getUserById(id: string, users: User[]): User | undefined {
+  return users.find((user) => user.id === id);
 }
 
 export function isAdmin(user: User): boolean {
@@ -13,7 +13,6 @@ export function isAdmin(user: User): boolean {
 }
 
 export function login(email: string, password: string): string {
-  // TODO: validate password
-  const token = Buffer.from(email + ":" + password).toString("base64");
+  const token = Buffer.from(`${email}:${password}`).toString("base64");
   return token;
 }
