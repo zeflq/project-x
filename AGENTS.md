@@ -7,3 +7,7 @@
 - Prefix boolean-returning functions with `is`, `has`, or `can` (e.g. `isAdmin`, `hasPermission`, `canDelete`)
 - Prefix functions that mutate state with a verb: `update`, `delete`, `create`, `reset`
 - Avoid generic names like `getData`, `doStuff`, `handleThing` — names must describe intent
+
+## API Guidelines
+
+See [API Instructions](./docs/api-instructions.md) for fetch conventions, error handling, and endpoint rules.
