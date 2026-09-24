@@ -574,40 +574,35 @@
   /* ═══════════════════════════════════════════
      SLIDE 11 — EXTENSION API REFERENCE
   ═══════════════════════════════════════════ */
-  #s11 {
-    flex-direction: row;
-  }
-  #s11 .left {
-    flex: 0 0 52%; padding: 2.5rem 3rem;
-    border-right: 1px solid var(--mid-gray);
-    display: flex; flex-direction: column;
+  #s11, #s11b {
+    flex-direction: column;
+    padding: 2rem 2.5rem 3.2rem;
     overflow: hidden;
-  }
-  #s11 .right {
-    flex: 1; display: flex; flex-direction: column;
-    padding: 2.5rem; gap: 0.35rem;
-    overflow: hidden;
-    justify-content: center;
   }
   .api-header {
-    font-size: 1.2rem; font-weight: 800; margin-bottom: 0.3rem;
+    font-size: 1.5rem; font-weight: 800; margin-bottom: 0.3rem;
     letter-spacing: -0.3px;
   }
   .api-sub {
-    font-family: var(--font-mono); font-size: 0.72rem;
+    font-family: var(--font-mono); font-size: 0.85rem;
     color: var(--gray); margin-bottom: 1rem;
   }
-  .ev-section {
-    margin-bottom: 0.6rem;
+  .api-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 0 2rem; flex: 1; min-height: 0; align-content: start;
   }
+  .api-grid-3 { grid-template-columns: repeat(3, 1fr); gap: 0 1.5rem; }
+  .api-col { min-width: 0; }
+
+  .ev-section { margin-bottom: 0.8rem; }
   .ev-section-label {
-    font-family: var(--font-mono); font-size: 0.65rem; font-weight: 700;
-    letter-spacing: 1.5px; margin-bottom: 0.2rem;
+    font-family: var(--font-mono); font-size: 0.74rem; font-weight: 700;
+    letter-spacing: 1.5px; margin-bottom: 0.3rem;
     display: flex; align-items: center; gap: 0.4rem;
   }
   .ev-section-label::before {
     content: ''; display: inline-block;
-    width: 8px; height: 8px; border-radius: 50%;
+    width: 9px; height: 9px; border-radius: 50%;
   }
   .ev-section-label.c-cyan { color: #1a5aaa; }
   .ev-section-label.c-cyan::before { background: #58A6FF; }
@@ -617,18 +612,23 @@
   .ev-section-label.c-yellow::before { background: #F0C040; }
   .ev-section-label.c-orange { color: #8a4a00; }
   .ev-section-label.c-orange::before { background: #FFA657; }
+  .ev-section-label.c-purple { color: #6a1aaa; }
+  .ev-section-label.c-purple::before { background: #BC8CFF; }
+  .ev-section-label.c-red { color: var(--red); }
+  .ev-section-label.c-red::before { background: var(--red); }
+
   .ev-row {
-    display: flex; align-items: baseline; gap: 0; margin-bottom: 0.18rem;
+    display: flex; align-items: baseline; gap: 0; margin-bottom: 0.22rem;
     background: var(--light-gray); border-radius: 4px; overflow: hidden;
   }
   .ev-stripe { width: 3px; flex-shrink: 0; align-self: stretch; }
   .ev-name {
-    font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700;
-    padding: 0.22rem 0.5rem; min-width: 188px;
+    font-family: var(--font-mono); font-size: 0.82rem; font-weight: 700;
+    padding: 0.3rem 0.6rem; min-width: 215px; flex-shrink: 0;
   }
   .ev-desc {
-    font-family: var(--font-mono); font-size: 0.68rem;
-    color: var(--gray); padding: 0.22rem 0.5rem 0.22rem 0;
+    font-family: var(--font-mono); font-size: 0.78rem;
+    color: var(--gray); padding: 0.3rem 0.6rem 0.3rem 0;
     line-height: 1.3;
   }
   .ev-cyan .ev-stripe { background: #58A6FF; }
@@ -639,21 +639,37 @@
   .ev-yellow .ev-name { color: #7a6000; }
   .ev-orange .ev-stripe { background: #FFA657; }
   .ev-orange .ev-name { color: #8a4a00; }
+  .ev-purple .ev-stripe { background: #BC8CFF; }
+  .ev-purple .ev-name { color: #6a1aaa; }
+  .ev-red .ev-stripe { background: var(--red); }
+  .ev-red .ev-name { color: var(--red); }
 
   .method-row {
     background: var(--light-gray); border-radius: 4px;
     overflow: hidden; display: flex; align-items: stretch;
-    padding: 0;
+    padding: 0; margin-bottom: 0.26rem;
   }
   .method-stripe { width: 3px; flex-shrink: 0; }
-  .method-body { padding: 0.3rem 0.7rem; flex: 1; }
+  .method-body { padding: 0.34rem 0.75rem; flex: 1; min-width: 0; }
   .method-name {
-    font-family: var(--font-mono); font-size: 0.73rem; font-weight: 700;
+    font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700;
   }
   .method-desc {
-    font-family: var(--font-mono); font-size: 0.66rem;
+    font-family: var(--font-mono); font-size: 0.73rem;
     color: var(--gray); line-height: 1.3;
   }
+  .m-red .method-stripe { background: var(--red); }
+  .m-red .method-name { color: var(--red); }
+  .m-blue .method-stripe { background: #58A6FF; }
+  .m-blue .method-name { color: #1a5aaa; }
+  .m-purple .method-stripe { background: #BC8CFF; }
+  .m-purple .method-name { color: #6a1aaa; }
+  .m-green .method-stripe { background: #39D353; }
+  .m-green .method-name { color: #1a6a2a; }
+  .m-yellow .method-stripe { background: #F0C040; }
+  .m-yellow .method-name { color: #7a6000; }
+  .m-orange .method-stripe { background: #FFA657; }
+  .m-orange .method-name { color: #8a4a00; }
 
   /* ═══════════════════════════════════════════
      SLIDE 12 — QUICK START
@@ -862,11 +878,11 @@
             </ul>
           </div>
           <div class="arch-inner-box aib-provider">
-            <strong>Provider Profiles</strong>
+            <strong>Subscription OAuth</strong>
             <ul>
               <li>OpenAI (codex)</li>
               <li>Anthropic (cc)</li>
-              <li>Gemini (cli)</li>
+              <li>GitHub Copilot</li>
             </ul>
           </div>
           <div class="arch-inner-box aib-tools">
@@ -897,7 +913,7 @@
       <div class="arch-box sdk">
         <div class="arch-label" style="justify-content:center;color:#6a1aaa">
           <span class="badge" style="background:#BC8CFF">@pi-ai</span>
-          <span>Unified LLM SDK &nbsp;—&nbsp; Client.complete() / stream()</span>
+          <span>Unified LLM SDK &nbsp;—&nbsp; createModels() → Models.stream() / complete()</span>
         </div>
         <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--gray)">provider-agnostic streaming · thinking blocks · credential resolution · prompt caching</div>
         <div style="margin-top:0.5rem;font-family:var(--font-mono);font-size:0.7rem;color:var(--dark-gray)">↓</div>
@@ -906,7 +922,7 @@
 
       <!-- NOTE -->
       <div class="arch-note">
-        <strong>Key design choice:</strong> The agent loop does NOT use the SDK's high-level <code>generate()</code> — it calls <code>Client.complete()</code> directly and implements its own loop to interleave tool execution with output truncation, steering message injection, event emission, and timeout enforcement.
+        <strong>Key design choice:</strong> The agent loop takes a <code>streamFn</code> and drives the conversation itself. pi passes <code>ModelRuntime.streamSimple()</code>, which resolves (and refreshes) provider credentials per request — so the loop owns tool execution, output truncation, steering message injection, event emission and timeout enforcement, not the SDK.
       </div>
 
     </div>
@@ -922,7 +938,7 @@
       <div class="tagline">How it actually works</div>
       <div class="stats">
         <div class="stat">
-          <span class="stat-n">52k</span>
+          <span class="stat-n">109k</span>
           <span class="stat-l">GitHub ★</span>
         </div>
         <div class="stat">
@@ -944,7 +960,7 @@
         </div>
         <div class="term-body">
           <span class="t-green t-bold">$ </span><span class="t-white">pi</span><br><br>
-          <span class="t-gray">╭─ pi v0.73 ─────────────────╮</span><br>
+          <span class="t-gray">╭─ pi v0.87 ─────────────────╮</span><br>
           <span class="t-gray">│ </span><span class="t-cyan">Ready. What do you need?</span><span class="t-gray">   │</span><br>
           <span class="t-gray">╰────────────────────────────╯</span><br><br>
           <span class="t-green t-bold">&gt; </span><span class="t-white">Fix the auth bug in login.ts</span><span class="t-green">█</span><br><br>
@@ -993,7 +1009,7 @@
   <div class="slide" id="s4">
     <div class="left">
       <h2 class="slide-title">The Agent Loop</h2>
-      <div style="font-family:var(--font-mono);font-size:0.8rem;color:var(--gray);">packages/agent-core · the heart of pi</div>
+      <div style="font-family:var(--font-mono);font-size:0.8rem;color:var(--gray);">packages/agent · the heart of pi</div>
       <div class="loop-diagram">
         <!-- Row 1 -->
         <div></div>
@@ -1109,7 +1125,7 @@
   <div class="slide" id="s7">
     <div class="left">
       <h2 class="slide-title">pi is a monorepo</h2>
-      <div style="font-family:var(--font-mono);font-size:0.8rem;color:var(--gray);margin-bottom:0.5rem">5 packages, each doing one thing well</div>
+      <div style="font-family:var(--font-mono);font-size:0.8rem;color:var(--gray);margin-bottom:0.5rem">10 published packages, each doing one thing well</div>
       <div class="pkg-tree">
         <div class="pkg-node pkg-main">
           <strong>@pi-coding-agent</strong>
@@ -1130,8 +1146,8 @@
             <span>Terminal UI · Differential rendering</span>
           </div>
           <div class="pkg-node pkg-web">
-            <strong>@pi-web-ui</strong>
-            <span>Web Components · ChatPanel</span>
+            <strong>@pi-protocol / client / server</strong>
+            <span>Remote sessions over CBOR</span>
           </div>
         </div>
         <div class="pkg-arrow">↓ @pi-ai connects to</div>
@@ -1158,8 +1174,8 @@
         <p>Terminal rendering with differential updates. Multi-line editor, autocomplete, markdown, theming.</p>
       </div>
       <div class="pkg-detail" style="border-color:#F0C040">
-        <strong style="color:#7a6000">@pi-web-ui</strong>
-        <p>Embed the agent in your own web application. ChatPanel and AgentInterface components.</p>
+        <strong style="color:#7a6000">@pi-protocol · @pi-client · @pi-server</strong>
+        <p>Transport-neutral CBOR protocol for driving a pi session remotely. Plus @pi-chord (composition runtime), @pi-telemetry, session-backends and pi-evals.</p>
       </div>
     </div>
   </div>
@@ -1325,61 +1341,150 @@
        SLIDE 11 — EXTENSION API REFERENCE
   ═══════════════════════════════════════════ -->
   <div class="slide" id="s11">
-    <div class="left">
-      <div class="api-header">Extension API — full reference</div>
-      <div class="api-sub">pi.on(event, handler)  ·  all lifecycle events</div>
+    <div class="api-header">Extension API — events (full reference)</div>
+    <div class="api-sub">pi.on(event, handler)  ·  36 lifecycle events  ·  handlers run in extension load order</div>
 
-      <div class="ev-section">
-        <div class="ev-section-label c-cyan">SESSION</div>
-        <div class="ev-row ev-cyan"><div class="ev-stripe"></div><span class="ev-name">session_start</span><span class="ev-desc">startup | new | fork | resume | reload</span></div>
-        <div class="ev-row ev-cyan"><div class="ev-stripe"></div><span class="ev-name">session_shutdown</span><span class="ev-desc">quit | reload | new | resume | fork</span></div>
-        <div class="ev-row ev-cyan"><div class="ev-stripe"></div><span class="ev-name">session_before_switch</span><span class="ev-desc">Before /new or /resume — can cancel</span></div>
-        <div class="ev-row ev-cyan"><div class="ev-stripe"></div><span class="ev-name">session_before_fork</span><span class="ev-desc">Before /fork or /clone — can cancel</span></div>
-        <div class="ev-row ev-cyan"><div class="ev-stripe"></div><span class="ev-name">session_before_compact</span><span class="ev-desc">Cancel or provide custom summary</span></div>
+    <div class="api-grid">
+      <div class="api-col">
+
+        <div class="ev-section">
+          <div class="ev-section-label c-purple">STARTUP &amp; RESOURCES</div>
+          <div class="ev-row ev-purple"><div class="ev-stripe"></div><span class="ev-name">project_trust</span><span class="ev-desc">Trust .pi / .agents configs — can decide</span></div>
+          <div class="ev-row ev-purple"><div class="ev-stripe"></div><span class="ev-name">resources_discover</span><span class="ev-desc">Add skill / prompt / theme paths</span></div>
+        </div>
+
+        <div class="ev-section">
+          <div class="ev-section-label c-cyan">SESSION</div>
+          <div class="ev-row ev-cyan"><div class="ev-stripe"></div><span class="ev-name">session_start</span><span class="ev-desc">startup | reload | new | resume | fork</span></div>
+          <div class="ev-row ev-cyan"><div class="ev-stripe"></div><span class="ev-name">session_info_changed</span><span class="ev-desc">Renamed via /name or setSessionName()</span></div>
+          <div class="ev-row ev-cyan"><div class="ev-stripe"></div><span class="ev-name">session_before_switch</span><span class="ev-desc">Before /new or /resume — can cancel</span></div>
+          <div class="ev-row ev-cyan"><div class="ev-stripe"></div><span class="ev-name">session_before_fork</span><span class="ev-desc">Before /fork or /clone — can cancel</span></div>
+          <div class="ev-row ev-cyan"><div class="ev-stripe"></div><span class="ev-name">session_before_compact</span><span class="ev-desc">Cancel, or supply your own summary</span></div>
+          <div class="ev-row ev-cyan"><div class="ev-stripe"></div><span class="ev-name">session_compact</span><span class="ev-desc">Saved. manual | threshold | overflow</span></div>
+          <div class="ev-row ev-cyan"><div class="ev-stripe"></div><span class="ev-name">session_compact_failed</span><span class="ev-desc">Compaction aborted or errored</span></div>
+          <div class="ev-row ev-cyan"><div class="ev-stripe"></div><span class="ev-name">session_before_tree</span><span class="ev-desc">Before /tree — cancel or summarize</span></div>
+          <div class="ev-row ev-cyan"><div class="ev-stripe"></div><span class="ev-name">session_tree</span><span class="ev-desc">newLeafId, oldLeafId, summaryEntry</span></div>
+          <div class="ev-row ev-cyan"><div class="ev-stripe"></div><span class="ev-name">session_shutdown</span><span class="ev-desc">quit | reload | new | resume | fork</span></div>
+        </div>
+
+        <div class="ev-section">
+          <div class="ev-section-label c-orange">MODEL &amp; INPUT</div>
+          <div class="ev-row ev-orange"><div class="ev-stripe"></div><span class="ev-name">model_select</span><span class="ev-desc">Model changed via /model or Ctrl+P</span></div>
+          <div class="ev-row ev-orange"><div class="ev-stripe"></div><span class="ev-name">thinking_level_select</span><span class="ev-desc">Reasoning effort changed. Notify-only.</span></div>
+          <div class="ev-row ev-orange"><div class="ev-stripe"></div><span class="ev-name">user_bash</span><span class="ev-desc">! and !! — intercept or swap backend</span></div>
+          <div class="ev-row ev-orange"><div class="ev-stripe"></div><span class="ev-name">input</span><span class="ev-desc">Raw user input — transform or handle</span></div>
+        </div>
+
       </div>
+      <div class="api-col">
 
-      <div class="ev-section">
-        <div class="ev-section-label c-green">AGENT</div>
-        <div class="ev-row ev-green"><div class="ev-stripe"></div><span class="ev-name">before_agent_start</span><span class="ev-desc">Inject msg / rewrite system prompt</span></div>
-        <div class="ev-row ev-green"><div class="ev-stripe"></div><span class="ev-name">agent_start / agent_end</span><span class="ev-desc">One per prompt. end exposes messages[]</span></div>
-        <div class="ev-row ev-green"><div class="ev-stripe"></div><span class="ev-name">turn_start / turn_end</span><span class="ev-desc">1 turn = 1 LLM response + its tools</span></div>
-        <div class="ev-row ev-green"><div class="ev-stripe"></div><span class="ev-name">message_start/update/end</span><span class="ev-desc">Streaming; end can replace the msg</span></div>
+        <div class="ev-section">
+          <div class="ev-section-label c-green">AGENT</div>
+          <div class="ev-row ev-green"><div class="ev-stripe"></div><span class="ev-name">before_agent_start</span><span class="ev-desc">Inject msg / rewrite system prompt</span></div>
+          <div class="ev-row ev-green"><div class="ev-stripe"></div><span class="ev-name">agent_start / agent_end</span><span class="ev-desc">One run. end exposes messages[]</span></div>
+          <div class="ev-row ev-green"><div class="ev-stripe"></div><span class="ev-name">agent_settled</span><span class="ev-desc">No auto-retry pending. Real idle.</span></div>
+          <div class="ev-row ev-green"><div class="ev-stripe"></div><span class="ev-name">ui_prompt_start / _end</span><span class="ev-desc">Blocking extension dialog spans</span></div>
+          <div class="ev-row ev-green"><div class="ev-stripe"></div><span class="ev-name">turn_start / turn_end</span><span class="ev-desc">1 turn = 1 LLM response + its tools</span></div>
+          <div class="ev-row ev-green"><div class="ev-stripe"></div><span class="ev-name">message_start/update/end</span><span class="ev-desc">Streaming. end can replace the msg</span></div>
+          <div class="ev-row ev-green"><div class="ev-stripe"></div><span class="ev-name">context</span><span class="ev-desc">Modify messages[] before each LLM call</span></div>
+        </div>
+
+        <div class="ev-section">
+          <div class="ev-section-label c-red">PROVIDER</div>
+          <div class="ev-row ev-red"><div class="ev-stripe"></div><span class="ev-name">before_provider_headers</span><span class="ev-desc">Mutate HTTP headers. null deletes a key.</span></div>
+          <div class="ev-row ev-red"><div class="ev-stripe"></div><span class="ev-name">before_provider_request</span><span class="ev-desc">Inspect or replace the provider payload</span></div>
+          <div class="ev-row ev-red"><div class="ev-stripe"></div><span class="ev-name">after_provider_response</span><span class="ev-desc">status + headers before body is read</span></div>
+        </div>
+
+        <div class="ev-section">
+          <div class="ev-section-label c-yellow">TOOLS</div>
+          <div class="ev-row ev-yellow"><div class="ev-stripe"></div><span class="ev-name">tool_call</span><span class="ev-desc">Can block. Mutate input in place.</span></div>
+          <div class="ev-row ev-yellow"><div class="ev-stripe"></div><span class="ev-name">tool_result</span><span class="ev-desc">Chain-modify content / details / isError</span></div>
+          <div class="ev-row ev-yellow"><div class="ev-stripe"></div><span class="ev-name">tool_execution_start</span><span class="ev-desc">Preflight, in assistant source order</span></div>
+          <div class="ev-row ev-yellow"><div class="ev-stripe"></div><span class="ev-name">tool_execution_update</span><span class="ev-desc">Partial results. May interleave.</span></div>
+          <div class="ev-row ev-yellow"><div class="ev-stripe"></div><span class="ev-name">tool_execution_end</span><span class="ev-desc">Completion order, not source order</span></div>
+        </div>
+
       </div>
-
-      <div class="ev-section">
-        <div class="ev-section-label c-yellow">TOOLS</div>
-        <div class="ev-row ev-yellow"><div class="ev-stripe"></div><span class="ev-name">tool_call</span><span class="ev-desc">Can block. Mutate input in-place.</span></div>
-        <div class="ev-row ev-yellow"><div class="ev-stripe"></div><span class="ev-name">tool_result</span><span class="ev-desc">Chain-modify content/details/isError</span></div>
-        <div class="ev-row ev-yellow"><div class="ev-stripe"></div><span class="ev-name">tool_execution_start/end</span><span class="ev-desc">Parallel tools may interleave</span></div>
-      </div>
-
-      <div class="ev-section">
-        <div class="ev-section-label c-orange">MODEL / INPUT</div>
-        <div class="ev-row ev-orange"><div class="ev-stripe"></div><span class="ev-name">model_select</span><span class="ev-desc">Model changed via /model or Ctrl+P</span></div>
-        <div class="ev-row ev-orange"><div class="ev-stripe"></div><span class="ev-name">input</span><span class="ev-desc">Raw user input — transform or handle</span></div>
-        <div class="ev-row ev-orange"><div class="ev-stripe"></div><span class="ev-name">context</span><span class="ev-desc">Modify messages[] before each LLM call</span></div>
-        <div class="ev-row ev-orange"><div class="ev-stripe"></div><span class="ev-name">resources_discover</span><span class="ev-desc">Add skill / prompt / theme paths</span></div>
-      </div>
-    </div>
-
-    <div class="right">
-      <div class="api-sub" style="margin-bottom:0.5rem">pi.registerTool()  ·  pi.registerCommand()  ·  and more</div>
-
-      <div class="method-row"><div class="method-stripe" style="background:var(--red)"></div><div class="method-body"><div class="method-name" style="color:var(--red)">pi.registerTool(def)</div><div class="method-desc">Add a tool the LLM can call. Supports promptSnippet, renderCall, renderResult.</div></div></div>
-      <div class="method-row"><div class="method-stripe" style="background:#58A6FF"></div><div class="method-body"><div class="method-name" style="color:#1a5aaa">pi.registerCommand(name, opts)</div><div class="method-desc">Add a /slash command. Tab-completable with getArgumentCompletions.</div></div></div>
-      <div class="method-row"><div class="method-stripe" style="background:#BC8CFF"></div><div class="method-body"><div class="method-name" style="color:#6a1aaa">pi.registerShortcut(key, opts)</div><div class="method-desc">Bind keyboard shortcut e.g. ctrl+shift+p.</div></div></div>
-      <div class="method-row"><div class="method-stripe" style="background:#FFA657"></div><div class="method-body"><div class="method-name" style="color:#8a4a00">pi.registerFlag(name, opts)</div><div class="method-desc">Add a CLI flag. Read it with pi.getFlag().</div></div></div>
-      <div class="method-row"><div class="method-stripe" style="background:#39D353"></div><div class="method-body"><div class="method-name" style="color:#1a6a2a">pi.sendUserMessage(content)</div><div class="method-desc">Send as user. deliverAs: "steer" | "followUp".</div></div></div>
-      <div class="method-row"><div class="method-stripe" style="background:#F0C040"></div><div class="method-body"><div class="method-name" style="color:#7a6000">pi.setActiveTools(names[])</div><div class="method-desc">Enable / disable tools at runtime.</div></div></div>
-      <div class="method-row"><div class="method-stripe" style="background:var(--red)"></div><div class="method-body"><div class="method-name" style="color:var(--red)">pi.setModel(model)</div><div class="method-desc">Switch model. Returns false if no API key.</div></div></div>
-      <div class="method-row"><div class="method-stripe" style="background:#58A6FF"></div><div class="method-body"><div class="method-name" style="color:#1a5aaa">pi.appendEntry(type, data)</div><div class="method-desc">Persist state in session (not LLM context).</div></div></div>
-      <div class="method-row"><div class="method-stripe" style="background:#BC8CFF"></div><div class="method-body"><div class="method-name" style="color:#6a1aaa">pi.setSessionName(name)</div><div class="method-desc">Label session in the /tree selector.</div></div></div>
-      <div class="method-row"><div class="method-stripe" style="background:#39D353"></div><div class="method-body"><div class="method-name" style="color:#1a6a2a">pi.exec(cmd, args, opts)</div><div class="method-desc">Shell helper — returns stdout / stderr / code.</div></div></div>
     </div>
   </div>
 
   <!-- ═══════════════════════════════════════════
-       SLIDE 12 — QUICK START
+       SLIDE 12 — EXTENSION API METHODS
+  ═══════════════════════════════════════════ -->
+  <div class="slide" id="s11b">
+    <div class="api-header">Extension API — methods &amp; context</div>
+    <div class="api-sub">pi.*  ·  the ExtensionAPI surface  ·  ctx.*  ·  what every handler receives</div>
+
+    <div class="api-grid api-grid-3">
+      <div class="api-col">
+
+        <div class="ev-section">
+          <div class="ev-section-label c-red">TOOLS &amp; COMMANDS</div>
+          <div class="method-row m-red"><div class="method-stripe"></div><div class="method-body"><div class="method-name">pi.registerTool(def)</div><div class="method-desc">Add a tool the LLM can call. promptSnippet, renderCall, renderResult.</div></div></div>
+          <div class="method-row m-red"><div class="method-stripe"></div><div class="method-body"><div class="method-name">pi.registerCommand(name, opts)</div><div class="method-desc">Add a /slash command. Tab-complete via getArgumentCompletions.</div></div></div>
+          <div class="method-row m-red"><div class="method-stripe"></div><div class="method-body"><div class="method-name">pi.registerShortcut(key, opts)</div><div class="method-desc">Bind a keyboard shortcut, e.g. ctrl+alt+p.</div></div></div>
+          <div class="method-row m-red"><div class="method-stripe"></div><div class="method-body"><div class="method-name">pi.registerFlag() / getFlag()</div><div class="method-desc">Add a CLI flag and read its value back.</div></div></div>
+          <div class="method-row m-red"><div class="method-stripe"></div><div class="method-body"><div class="method-name">pi.getAllTools() / getActiveTools()</div><div class="method-desc">Inspect what is registered vs. currently active.</div></div></div>
+          <div class="method-row m-red"><div class="method-stripe"></div><div class="method-body"><div class="method-name">pi.setActiveTools(names[])</div><div class="method-desc">Enable / disable tools at runtime.</div></div></div>
+          <div class="method-row m-red"><div class="method-stripe"></div><div class="method-body"><div class="method-name">pi.getCommands()</div><div class="method-desc">All /commands with source and scope provenance.</div></div></div>
+        </div>
+
+        <div class="ev-section">
+          <div class="ev-section-label c-purple">RENDERING</div>
+          <div class="method-row m-purple"><div class="method-stripe"></div><div class="method-body"><div class="method-name">pi.registerMessageRenderer()</div><div class="method-desc">Render a CustomMessageEntry in the transcript.</div></div></div>
+          <div class="method-row m-purple"><div class="method-stripe"></div><div class="method-body"><div class="method-name">pi.registerEntryRenderer()</div><div class="method-desc">Render a CustomEntry. Never enters LLM context.</div></div></div>
+          <div class="method-row m-purple"><div class="method-stripe"></div><div class="method-body"><div class="method-name">pi.registerMarkdownTransformer()</div><div class="method-desc">Rewrite user / assistant Markdown before render.</div></div></div>
+        </div>
+
+      </div>
+      <div class="api-col">
+
+        <div class="ev-section">
+          <div class="ev-section-label c-cyan">MESSAGES &amp; STATE</div>
+          <div class="method-row m-blue"><div class="method-stripe"></div><div class="method-body"><div class="method-name">pi.sendMessage(msg, opts)</div><div class="method-desc">Custom message. steer | followUp | nextTurn.</div></div></div>
+          <div class="method-row m-blue"><div class="method-stripe"></div><div class="method-body"><div class="method-name">pi.sendUserMessage(content, opts)</div><div class="method-desc">Send as user. Always triggers a turn.</div></div></div>
+          <div class="method-row m-blue"><div class="method-stripe"></div><div class="method-body"><div class="method-name">pi.appendEntry(type, data)</div><div class="method-desc">Persist state in the session, outside LLM context.</div></div></div>
+          <div class="method-row m-blue"><div class="method-stripe"></div><div class="method-body"><div class="method-name">pi.setLabel(entryId, label)</div><div class="method-desc">Bookmark an entry so it stands out in /tree.</div></div></div>
+          <div class="method-row m-blue"><div class="method-stripe"></div><div class="method-body"><div class="method-name">pi.setSessionName() / getSessionName()</div><div class="method-desc">Name shown in the session selector.</div></div></div>
+          <div class="method-row m-blue"><div class="method-stripe"></div><div class="method-body"><div class="method-name">pi.events</div><div class="method-desc">EventBus for extension-to-extension messaging.</div></div></div>
+        </div>
+
+        <div class="ev-section">
+          <div class="ev-section-label c-green">MODEL &amp; PROVIDERS</div>
+          <div class="method-row m-green"><div class="method-stripe"></div><div class="method-body"><div class="method-name">pi.setModel(model)</div><div class="method-desc">Switch model. Returns false if no API key.</div></div></div>
+          <div class="method-row m-green"><div class="method-stripe"></div><div class="method-body"><div class="method-name">pi.getThinkingLevel() / setThinkingLevel()</div><div class="method-desc">Read or set reasoning effort.</div></div></div>
+          <div class="method-row m-green"><div class="method-stripe"></div><div class="method-body"><div class="method-name">pi.registerProvider(name, config)</div><div class="method-desc">Add or override a provider. baseUrl, OAuth, models.</div></div></div>
+          <div class="method-row m-green"><div class="method-stripe"></div><div class="method-body"><div class="method-name">pi.unregisterProvider(name)</div><div class="method-desc">Remove a registered provider.</div></div></div>
+          <div class="method-row m-green"><div class="method-stripe"></div><div class="method-body"><div class="method-name">pi.exec(cmd, args, opts)</div><div class="method-desc">Shell helper — stdout / stderr / code / killed.</div></div></div>
+        </div>
+
+      </div>
+      <div class="api-col">
+
+        <div class="ev-section">
+          <div class="ev-section-label c-orange">EXTENSION CONTEXT — ctx</div>
+          <div class="method-row m-orange"><div class="method-stripe"></div><div class="method-body"><div class="method-name">ctx.ui</div><div class="method-desc">notify, confirm, select, input, editor, custom, setStatus, setWidget, setFooter, setTheme.</div></div></div>
+          <div class="method-row m-orange"><div class="method-stripe"></div><div class="method-body"><div class="method-name">ctx.sessionManager</div><div class="method-desc">Entries, branch, session file and id.</div></div></div>
+          <div class="method-row m-orange"><div class="method-stripe"></div><div class="method-body"><div class="method-name">ctx.getSystemPrompt() / …Options()</div><div class="method-desc">Current prompt plus the structured build options.</div></div></div>
+          <div class="method-row m-orange"><div class="method-stripe"></div><div class="method-body"><div class="method-name">ctx.getContextUsage() / compact()</div><div class="method-desc">Token usage; trigger compaction.</div></div></div>
+          <div class="method-row m-orange"><div class="method-stripe"></div><div class="method-body"><div class="method-name">ctx.isIdle() / abort() / shutdown()</div><div class="method-desc">Run control and graceful exit.</div></div></div>
+          <div class="method-row m-orange"><div class="method-stripe"></div><div class="method-body"><div class="method-name">ctx.cwd / model / mode / hasUI / signal</div><div class="method-desc">Environment. Check hasUI before prompting.</div></div></div>
+        </div>
+
+        <div class="ev-section">
+          <div class="ev-section-label c-yellow">COMMAND CONTEXT ONLY</div>
+          <div class="method-row m-yellow"><div class="method-stripe"></div><div class="method-body"><div class="method-name">ctx.reload()</div><div class="method-desc">Reload extensions, skills, prompts, themes. Treat as terminal for the handler.</div></div></div>
+          <div class="method-row m-yellow"><div class="method-stripe"></div><div class="method-body"><div class="method-name">ctx.newSession() / fork() / switchSession()</div><div class="method-desc">Replace the session. navigateTree() for /tree.</div></div></div>
+          <div class="method-row m-yellow"><div class="method-stripe"></div><div class="method-body"><div class="method-name">ctx.waitForIdle()</div><div class="method-desc">Await the running agent before acting.</div></div></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SLIDE 13 — QUICK START
   ═══════════════════════════════════════════ -->
   <div class="slide" id="s12">
     <h2 class="slide-title">Let's go. 3 steps.</h2>
@@ -1424,13 +1529,13 @@
 <div class="nav">
   <button onclick="prev()">← prev</button>
   <div class="dot-row" id="dots"></div>
-  <span class="counter" id="counter">1 / 12</span>
+  <span class="counter" id="counter">1 / 13</span>
   <button onclick="next()">next →</button>
 </div>
 <div class="kbd-hint">← → or Space to navigate</div>
 
 <script>
-  const total = 12;
+  const total = 13;
   let current = 0;
 
   const slides = Array.from(document.querySelectorAll('.slide'));
